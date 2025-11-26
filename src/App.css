@@ -50,6 +50,7 @@ input[type='number']::-webkit-inner-spin-button {
 #root {
   background-color: var(--grey-200);
   min-height: 100vh;
+  min-width: 23.4rem;
 }
 
 .logo-header {
@@ -214,6 +215,17 @@ input[type='number']::-webkit-inner-spin-button {
   color: var(--green-800);
 }
 
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+a {
+  color: var(--green-900);
+}
+
 @media (min-width: 39rem) {
   .main-card {
     max-width: 38rem;
@@ -234,6 +246,15 @@ input[type='number']::-webkit-inner-spin-button {
     font-size: var(--fs-48);
     line-height: var(--lh-48);
     letter-spacing: var(--ls-48);
+  }
+
+  footer {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  footer p {
+    margin: 0 0.5rem;
   }
 }
 
