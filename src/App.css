@@ -42,6 +42,11 @@
   --small-radius: 5px;
 }
 
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 #root {
   background-color: var(--grey-200);
   min-height: 100vh;
@@ -63,12 +68,14 @@
   border-top-left-radius: var(--outer-radius);
   border-top-right-radius: var(--outer-radius);
   padding: 2rem;
-  max-width: 23.44rem;
+  min-width: 17rem;
+  max-width: 24rem;
   margin: 0 auto;
   box-shadow: 0 2rem 2.5rem var(--grey-300);
 }
 
 .section-label {
+  font-size: 1rem;
   line-height: var(--lh-16);
   color: var(--grey-500);
 }
@@ -79,15 +86,20 @@
   gap: 8px;
 }
 
-.input {
+.input.bill,
+.input.people {
   text-align: right;
   font-size: var(--fs-24);
   line-height: var(--lh-24);
-  padding: 6px 0 6px 18px;
+  padding: 6px 18px;
   background-color: var(--grey-50);
   border: none;
   border-radius: var(--small-radius);
   color: var(--green-900);
+}
+
+.input:focus {
+  outline-color: var(--green-400);
 }
 
 .input.bill {
@@ -96,21 +108,15 @@
   background-position: 18px center;
 }
 
-.radio-group {
+.tip-btn-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  position: relative;
 }
 
-.input.tip {
-  width: 0;
-  height: 0;
-  position: absolute;
-}
-
-.radio-label {
+.tip-btn {
   background-color: var(--green-900);
+  border: none;
   border-radius: var(--small-radius);
   color: white;
   font-size: var(--fs-24);
@@ -119,18 +125,27 @@
   padding: 0.15rem 1rem;
 }
 
-.radio-label:hover {
+.tip-btn:hover {
   background-color: var(--green-200);
   color: var(--green-900);
 }
 
-.input.tip:checked + .radio-label {
+.tip-btn.active {
   background-color: var(--green-400);
   color: var(--green-900);
 }
 
-.radio-label.custom {
+.custom-tip {
+  width: 100%;
+  font-size: 1.5rem;
   background-color: var(--grey-50);
+  border: none;
+  border-radius: var(--small-radius);
+  text-align: center;
+}
+
+.custom-tip::placeholder {
+  font-size: 1.5rem;
   color: var(--grey-550);
 }
 
@@ -147,11 +162,12 @@
   background-color: var(--green-900);
   padding: 29px 23px;
   border-radius: var(--inner-radius);
+  overflow: hidden;
 }
 
 .results-content {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-direction: column;
 }
 
@@ -193,6 +209,11 @@
   background-color: var(--green-200);
 }
 
+.btn.reset:disabled {
+  background-color: var(--green-750);
+  color: var(--green-800);
+}
+
 @media (min-width: 39rem) {
   .main-card {
     max-width: 38rem;
@@ -201,7 +222,7 @@
     border-radius: var(--outer-radius);
   }
 
-  .radio-group {
+  .tip-btn-container {
     grid-template-columns: repeat(3, 1fr);
   }
 
@@ -224,7 +245,7 @@
   .main-card {
     display: grid;
     grid-template-rows: repeat(3, auto);
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
       'bill results'
       'tip results'

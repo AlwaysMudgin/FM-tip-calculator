@@ -14,7 +14,7 @@ function People({ controls }) {
         name="people"
         id="people"
         type="number"
-        placeholder={1}
+        placeholder={0}
         min={1}
         step={1}
         value={numPeople}

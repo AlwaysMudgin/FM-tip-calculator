@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Results({ results, reset }) {
+function Results({ results, reset, resetDisabled }) {
   return (
     <section className="results-card">
       <div className="results-content">
@@ -23,6 +23,7 @@ function Results({ results, reset }) {
         className="btn reset"
         type="button"
         aria-label="reset values"
+        disabled={resetDisabled}
         onClick={reset}
       >
         RESET

@@ -1,85 +1,51 @@
 import React from 'react';
 import CardSection from '../CardSection/CardSection';
 
+const TIP_BUTTONS = [5, 10, 15, 25, 50];
+
 function Tip({ controls }) {
-  const { tipPercent, setTipPercent } = controls;
+  const { tipPercent, setTipPercent, customTip, setCustomTip } = controls;
+
+  function handleClick(event) {
+    setTipPercent(Number(event.target.dataset.tipValue));
+  }
+
+  function handleCustomTip(event) {
+    const input = event.target.value;
+    if (input === '') {
+      setCustomTip(input);
+    } else {
+      setCustomTip(Number(input));
+      setTipPercent(Number(input));
+    }
+  }
 
   return (
     <CardSection name="tip">
-      <p className="section-label">Select Tip %</p>
-      <div className="radio-group">
+      <h1 className="section-label">Select Tip %</h1>
+      <div className="tip-btn-container">
+        {TIP_BUTTONS.map((value) => {
+          const classString =
+            tipPercent === value ? 'tip-btn active' : 'tip-btn';
+          return (
+            <button
+              key={value}
+              className={classString}
+              type="button"
+              data-tip-value={value}
+              onClick={handleClick}
+            >
+              {value}%
+            </button>
+          );
+        })}
         <input
-          className="input tip"
-          type="radio"
-          name="tip"
-          id={5}
-          value={5}
-          checked={tipPercent === 5}
-          onChange={(event) => setTipPercent(Number(event.target.value))}
+          className="input custom-tip"
+          type="number"
+          placeholder="Custom"
+          value={customTip}
+          onChange={handleCustomTip}
         />
-        <label className="radio-label" htmlFor={5}>
-          5%
-        </label>
-        <input
-          className="input tip"
-          type="radio"
-          name="tip"
-          id={10}
-          value={10}
-          checked={tipPercent === 10}
-          onChange={(event) => setTipPercent(Number(event.target.value))}
-        />
-        <label className="radio-label" htmlFor={10}>
-          10%
-        </label>
-        <input
-          className="input tip"
-          type="radio"
-          name="tip"
-          id={15}
-          value={15}
-          checked={tipPercent === 15}
-          onChange={(event) => setTipPercent(Number(event.target.value))}
-        />
-        <label className="radio-label" htmlFor={15}>
-          15%
-        </label>
-        <input
-          className="input tip"
-          type="radio"
-          name="tip"
-          id={25}
-          value={25}
-          checked={tipPercent === 25}
-          onChange={(event) => setTipPercent(Number(event.target.value))}
-        />
-        <label className="radio-label" htmlFor={25}>
-          25%
-        </label>
-        <input
-          className="input tip"
-          type="radio"
-          name="tip"
-          id={50}
-          value={50}
-          checked={tipPercent === 50}
-          onChange={(event) =>
-            setTipPercent(Number(Number(event.target.value)))
-          }
-        />
-        <label className="radio-label" htmlFor={50}>
-          50%
-        </label>
-        <input
-          className="input tip"
-          type="radio"
-          name="tip"
-          id="custom"
-          disabled
-        />
-        <label className="radio-label custom" htmlFor="custom">
-          Custom
-        </label>
       </div>
     </CardSection>
   );

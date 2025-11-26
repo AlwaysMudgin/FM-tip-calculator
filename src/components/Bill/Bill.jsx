@@ -6,9 +6,9 @@ function Bill({ controls }) {
 
   return (
     <CardSection name="bill">
-      <label className="section-label" htmlFor="bill">
+      <h1 className="section-label" htmlFor="bill">
         Bill
-      </label>
+      </h1>
       <input
         className="input bill"
         name="bill"
