@@ -3,11 +3,12 @@ import Bill from '../Bill/Bill';
 import Tip from '../Tip/Tip';
 import People from '../People/People';
 import Results from '../Results/Results';
+import getTotal from '../../calculate';
 
 function MainCard() {
   const [bill, setBill] = React.useState();
-  const [tipPercent, setTipPercent] = React.useState(15);
-  const [numPeople, setNumPeople] = React.useState(1);
+  const [tipPercent, setTipPercent] = React.useState();
+  const [numPeople, setNumPeople] = React.useState();
 
   const billControls = {
     bill,
@@ -24,18 +25,12 @@ function MainCard() {
     setNumPeople,
   };
 
-  const resultControls = {
-    bill,
-    tipPercent,
-    numPeople,
-  };
-
   return (
     <main className="main-card">
       <Bill controls={billControls} />
       <Tip controls={tipControls} />
       <People controls={peopleControls} />
-      <Results controls={resultControls} />
+      <Results results={getTotal(bill, tipPercent, numPeople)} />
     </main>
   );
 }

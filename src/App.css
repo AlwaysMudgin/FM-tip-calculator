@@ -27,12 +27,12 @@
   --fs-20: 1.25rem;
   --fs-13: 0.8125rem;
 
-  --lh-48: 4.4375;
-  --lh-32: 2.9375;
-  --lh-24: 2.25;
-  --lh-20: 1.875;
+  --lh-48: 1.48;
+  --lh-32: 1.48;
+  --lh-24: 1.5;
+  --lh-20: 1.5;
   --lh-16: 1.5;
-  --lh-13: 1.1875;
+  --lh-13: 1.46;
 
   --ls-48: -1px;
   --ls-32: -0.67px;
@@ -44,13 +44,15 @@
 
 #root {
   background-color: var(--grey-200);
+  min-height: 100vh;
 }
 
 .logo-header {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: inherit;
-  padding: 50px 0;
+  height: 144px;
 }
 
 .main-card {
@@ -61,6 +63,9 @@
   border-top-left-radius: var(--outer-radius);
   border-top-right-radius: var(--outer-radius);
   padding: 2rem;
+  max-width: 23.44rem;
+  margin: 0 auto;
+  box-shadow: 0 2rem 2.5rem var(--grey-300);
 }
 
 .section-label {
@@ -111,7 +116,12 @@
   font-size: var(--fs-24);
   line-height: var(--lh-24);
   text-align: center;
-  padding: 0.25rem;
+  padding: 0.15rem 1rem;
+}
+
+.radio-label:hover {
+  background-color: var(--green-200);
+  color: var(--green-900);
 }
 
 .input.tip:checked + .radio-label {
@@ -176,4 +186,64 @@
   border: none;
   border-radius: var(--small-radius);
   padding: 5px 0;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: var(--green-200);
+}
+
+@media (min-width: 39rem) {
+  .main-card {
+    max-width: 38rem;
+    max-height: 50rem;
+    padding: 3.375rem 4.72rem;
+    border-radius: var(--outer-radius);
+  }
+
+  .radio-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .results-card {
+    gap: 1rem;
+  }
+
+  .result-value {
+    font-size: var(--fs-48);
+    line-height: var(--lh-48);
+    letter-spacing: var(--ls-48);
+  }
+}
+
+@media (min-width: 64rem) {
+  .logo-header {
+    height: 14rem;
+  }
+
+  .main-card {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(2, auto);
+    grid-template-areas:
+      'bill results'
+      'tip results'
+      'people results';
+    max-width: 57.5rem;
+    max-height: 30rem;
+    padding: 2rem 2.5rem;
+  }
+
+  .card-section.tip {
+    grid-area: tip;
+  }
+
+  .card-section.people {
+    grid-area: people;
+  }
+
+  .results-card {
+    grid-area: results;
+    justify-content: space-between;
+  }
 }

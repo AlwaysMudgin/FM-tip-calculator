@@ -14,7 +14,9 @@ function Bill({ controls }) {
         name="bill"
         id="bill"
         type="number"
-        placeholder="0"
+        placeholder={0}
+        min={0}
+        step={0.01}
         value={bill}
         onChange={(event) => setBill(event.target.value)}
       />

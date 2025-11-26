@@ -14,7 +14,9 @@ function People({ controls }) {
         name="people"
         id="people"
         type="number"
-        placeholder="1"
+        placeholder={1}
+        min={1}
+        step={1}
         value={numPeople}
         onChange={(event) => setNumPeople(event.target.value)}
       />

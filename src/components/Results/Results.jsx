@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Results() {
+function Results({ results }) {
   return (
     <section className="results-card">
       <div className="results-content">
@@ -9,14 +9,14 @@ function Results() {
             <p className="result-label">Tip Amount</p>
             <p className="per-person">/ person</p>
           </div>
-          <p className="result-value">$4.27</p>
+          <p className="result-value">{`$${results.tipEach}`}</p>
         </div>
         <div className="result total">
           <div className="result-text">
             <p className="result-label">Total</p>
             <p className="per-person">/ person</p>
           </div>
-          <p className="result-value">$32.79</p>
+          <p className="result-value">{`$${results.totalEach}`}</p>
         </div>
       </div>
       <button className="btn reset" type="button" aria-label="reset values">
