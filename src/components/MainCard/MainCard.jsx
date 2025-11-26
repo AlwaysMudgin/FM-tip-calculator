@@ -6,9 +6,15 @@ import Results from '../Results/Results';
 import getTotal from '../../calculate';
 
 function MainCard() {
-  const [bill, setBill] = React.useState();
+  const [bill, setBill] = React.useState(0);
   const [tipPercent, setTipPercent] = React.useState();
-  const [numPeople, setNumPeople] = React.useState();
+  const [numPeople, setNumPeople] = React.useState(1);
+
+  function resetAll() {
+    setBill(0);
+    setTipPercent();
+    setNumPeople(1);
+  }
 
   const billControls = {
     bill,
@@ -30,7 +36,10 @@ function MainCard() {
       <Bill controls={billControls} />
       <Tip controls={tipControls} />
       <People controls={peopleControls} />
-      <Results results={getTotal(bill, tipPercent, numPeople)} />
+      <Results
+        results={getTotal(bill, tipPercent, numPeople)}
+        reset={resetAll}
+      />
     </main>
   );
 }

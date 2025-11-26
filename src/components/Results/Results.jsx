@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Results({ results }) {
+function Results({ results, reset }) {
   return (
     <section className="results-card">
       <div className="results-content">
@@ -19,7 +19,12 @@ function Results({ results }) {
           <p className="result-value">{`$${results.totalEach}`}</p>
         </div>
       </div>
-      <button className="btn reset" type="button" aria-label="reset values">
+      <button
+        className="btn reset"
+        type="button"
+        aria-label="reset values"
+        onClick={reset}
+      >
         RESET
       </button>
     </section>
