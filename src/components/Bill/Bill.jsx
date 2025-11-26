@@ -18,7 +18,7 @@ function Bill({ controls }) {
         min={0}
         step={0.01}
         value={bill}
-        onChange={(event) => setBill(event.target.value)}
+        onChange={(event) => setBill(Number(event.target.value))}
       />
     </CardSection>
   );

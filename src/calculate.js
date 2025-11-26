@@ -1,17 +1,15 @@
 export default function getTotal(bill, tipPercent, numPeople) {
-  const tip = Math.ceil(bill * (tipPercent / 100) * 100) / 100;
-  const billEach = Math.ceil((bill / numPeople) * 100) / 100;
-
-  let tipEach = Math.ceil((tip / numPeople) * 100) / 100;
-  tipEach = tipEach.toFixed(2);
-  if (isNaN(tipEach)) {
-    tipEach = '0.00';
-  }
-  let totalEach = billEach + Number(tipEach);
-  totalEach = totalEach.toFixed(2);
-  if (isNaN(totalEach)) {
-    totalEach = '0.00';
+  if (bill === '' || tipPercent === '' || numPeople === '') {
+    return {
+      tipEach: '0.00',
+      totalEach: '0.00',
+    };
   }
 
-  return { tipEach, totalEach };
+  const tip = (bill * tipPercent) / 100;
+  let tipEach = tip / numPeople;
+
+  let totalEach = (bill + tip) / numPeople;
+
+  return { tipEach: tipEach.toFixed(2), totalEach: totalEach.toFixed(2) };
 }

@@ -18,7 +18,7 @@ function People({ controls }) {
         min={1}
         step={1}
         value={numPeople}
-        onChange={(event) => setNumPeople(event.target.value)}
+        onChange={(event) => setNumPeople(Number(event.target.value))}
       />
     </CardSection>
   );

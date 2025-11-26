@@ -63,7 +63,9 @@ function Tip({ controls }) {
           id={50}
           value={50}
           checked={tipPercent === 50}
-          onChange={(event) => setTipPercent(Number(event.target.value))}
+          onChange={(event) =>
+            setTipPercent(Number(Number(event.target.value)))
+          }
         />
         <label className="radio-label" htmlFor={50}>
           50%
